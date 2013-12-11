@@ -56,20 +56,20 @@ class RouteHandler {
     }
 
     newpage.classes.add("page-current");
-          newpage.classes.addAll(inClass);
-          if (previouspage != null) {
-            previouspage.classes.addAll(outClass);
-            previouspage.classes.remove("page-current");
-          }
+      newpage.classes.addAll(inClass);
+      if (previouspage != null) {
+        previouspage.classes.addAll(outClass);
+        previouspage.classes.remove("page-current");
+      }
 
-          currentAnim = Window.animationEndEvent.forTarget(newpage).listen((_) {
-            // we are just interested in the first event (and Future don't enable cancel)
-            currentAnim.cancel();
-            currentAnim = null;
-            for (Element page in querySelector(".content").children)
-              page.classes.removeAll(transitionClass);
-            adjustMainHeight();
-          });
+      currentAnim = Window.animationEndEvent.forTarget(newpage).listen((_) {
+        // we are just interested in the first event (and Future don't enable cancel)
+        currentAnim.cancel();
+        currentAnim = null;
+        for (Element page in querySelector(".content").children)
+          page.classes.removeAll(transitionClass);
+        adjustMainHeight();
+      });
   }
 
   /* reassign some heights as our objects are absolutely posititioned (this should be removed once we use flexbox) sound*/
